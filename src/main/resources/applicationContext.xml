@@ -8,4 +8,16 @@
   <bean id="helloWorld" class="rh.study.spring.bean.HelloWorld">
     <property name="name" value="ruanhao"/>
   </bean>
+
+  <!--<bean id="car" class="rh.study.spring.bean.factorybean.CarFactoryBean" carInfo="超级跑车,400,20000" />-->
+
+  <bean id="circleA" class="rh.study.spring.bean.beancurrentlyincreationexception.constructor.CircleA">
+    <constructor-arg index="0" ref="circleB" />
+  </bean>
+  <bean id="circleB" class="rh.study.spring.bean.beancurrentlyincreationexception.constructor.CircleB">
+    <constructor-arg index="0" ref="circleC" />
+  </bean>
+  <bean id="circleC" class="rh.study.spring.bean.beancurrentlyincreationexception.constructor.CircleC">
+    <constructor-arg index="0" ref="circleA" />
+  </bean>
 </beans>
