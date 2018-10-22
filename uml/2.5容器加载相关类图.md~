@@ -281,6 +281,13 @@
 		    (object Class "BeanDefinitionParserDelegate"
 			quid       	"5BC979E20010"
 			documentation 	"定义解析 Element 的各种方法")
+		    (object Class "DefaultDocumentLoader"
+			quid       	"5BC9CF5A02CB"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"5BC9CF7A028A"
+				supplier   	"Use Case View::配置文件读取相关类图 2.4::DocumentLoader"
+				quidu      	"5BC9760A0375")))
 		    (object Association "$UNNAMED$3"
 			quid       	"5BC978C802BB"
 			roles      	(list role_list
@@ -1002,6 +1009,46 @@
 				vertices   	(list Points
 				    (2041, 209)
 				    (1815, 183))
+				line_style 	0)
+			    (object ClassView "Class" "Use Case View::配置文件读取相关类图 2.4::DefaultDocumentLoader" @36
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(258, 381)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@36
+				    location   	(24, 330)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	468
+				    justify    	0
+				    label      	"DefaultDocumentLoader")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"5BC9CF5A02CB"
+				width      	486
+				height     	126
+				annotation 	8
+				autoResize 	TRUE)
+			    (object InheritView "" @37
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5BC9CF7A028A"
+				client     	@36
+				supplier   	@9
+				vertices   	(list Points
+				    (257, 444)
+				    (254, 676))
 				line_style 	0)))))
 	    (object Class_Category "XmlBeanFactory初始化时序图 2.5"
 		quid       	"5BC97F1901A0"
@@ -1082,7 +1129,7 @@
 				quid       	"5BC98EB700D0"
 				supplier   	"Use Case View::XmlBeanFactory初始化时序图 2.5::Resource"
 				quidu      	"5BC98E4601E4")))
-		    (object Mechanism @36
+		    (object Mechanism @38
 			logical_models 	(list unit_reference_list
 			    (object Object "bf:BeanFactoryTest"
 				quid       	"5BC981850241"
@@ -1175,7 +1222,7 @@
 				persistence 	"Transient"
 				creationObj 	FALSE
 				multi      	FALSE)))
-		    (object Mechanism @37
+		    (object Mechanism @39
 			logical_models 	(list unit_reference_list
 			    (object Object "xmlBeanFactory:XmlBeanFactory"
 				quid       	"5BC9905B007E"
@@ -1357,6 +1404,100 @@
 				quid       	"5BC991860313"
 				persistence 	"Transient"
 				creationObj 	FALSE
+				multi      	FALSE)))
+		    (object Mechanism @40
+			logical_models 	(list unit_reference_list
+			    (object Object "reader:XmlBeanDefinitionReader"
+				quid       	"5BCD348900F2"
+				collaborators 	(list link_list
+				    (object Link
+					quid       	"5BCD34E801A6"
+					supplier   	"reader:XmlBeanDefinitionReader"
+					quidu      	"5BCD348900F2"
+					messages   	(list Messages
+					    (object Message "1: doLoadDocument(inputSource, resource)"
+						quid       	"5BCD34E801A7"
+						frequency  	"Aperiodic"
+						synchronization 	"ProcedureCall"
+						dir        	"FromClientToSupplier"
+						sequence   	"2"
+						ordinal    	1
+						quidu      	"000000000000"
+						creation   	FALSE)
+					    (object Message "5: registerBeanDefinitions(Document, Resource)"
+						quid       	"5BCD396903E4"
+						frequency  	"Aperiodic"
+						synchronization 	"ProcedureCall"
+						dir        	"FromClientToSupplier"
+						sequence   	"2.2"
+						ordinal    	5
+						quidu      	"000000000000"
+						creation   	FALSE)))
+				    (object Link
+					quid       	"5BCD36210153"
+					supplier   	"documentLoader: DefaultDocumentLoader"
+					quidu      	"5BCD35F40315"
+					messages   	(list Messages
+					    (object Message "2: loadDocument"
+						quid       	"5BCD36210154"
+						frequency  	"Aperiodic"
+						synchronization 	"ProcedureCall"
+						dir        	"FromClientToSupplier"
+						sequence   	"2.1"
+						ordinal    	2
+						quidu      	"000000000000"
+						creation   	FALSE)
+					    (object Message "4: Document"
+						quid       	"5BCD38B90016"
+						frequency  	"Aperiodic"
+						synchronization 	"Return"
+						dir        	"ToClientFromSupplier"
+						sequence   	"2.1.1.1"
+						ordinal    	4
+						quidu      	"000000000000"
+						creation   	FALSE))))
+				persistence 	"Transient"
+				creationObj 	FALSE
+				multi      	FALSE)
+			    (object Object "xmlBeanFactory"
+				quid       	"5BCD35480335"
+				collaborators 	(list link_list
+				    (object Link
+					quid       	"5BCD35B3022D"
+					supplier   	"reader:XmlBeanDefinitionReader"
+					quidu      	"5BCD348900F2"
+					messages   	(list Messages
+					    (object Message "doLoadBeanDefinitions"
+						quid       	"5BCD35B3022E"
+						frequency  	"Aperiodic"
+						synchronization 	"ProcedureCall"
+						dir        	"FromClientToSupplier"
+						sequence   	"1"
+						ordinal    	0
+						quidu      	"000000000000"
+						creation   	FALSE))))
+				persistence 	"Transient"
+				creationObj 	FALSE
+				multi      	FALSE)
+			    (object Object "documentLoader: DefaultDocumentLoader"
+				quid       	"5BCD35F40315"
+				collaborators 	(list link_list
+				    (object Link
+					quid       	"5BCD389E0327"
+					supplier   	"documentLoader: DefaultDocumentLoader"
+					quidu      	"5BCD35F40315"
+					messages   	(list Messages
+					    (object Message "3: SAX 解析XML"
+						quid       	"5BCD389E0328"
+						frequency  	"Aperiodic"
+						synchronization 	"ProcedureCall"
+						dir        	"FromClientToSupplier"
+						sequence   	"2.1.1"
+						ordinal    	3
+						quidu      	"000000000000"
+						creation   	FALSE))))
+				persistence 	"Transient"
+				creationObj 	FALSE
 				multi      	FALSE))))
 		logical_presentations 	(list unit_reference_list
 		    (object ClassDiagram "2.5.1 资源文件处理相关类图"
@@ -1368,7 +1509,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ClassRelativeContextResource" @38
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ClassRelativeContextResource" @41
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1383,7 +1524,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@38
+				    Parent_View 	@41
 				    location   	(655, 99)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1398,7 +1539,7 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object NoteView @39
+			    (object NoteView @42
 				location   	(1806, 126)
 				font       	(object Font
 				    size       	10
@@ -1410,7 +1551,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@39
+				    Parent_View 	@42
 				    location   	(1353, 16)
 				    fill_color 	13434879
 				    nlines     	4
@@ -1421,16 +1562,16 @@
 				fill_color 	13434879
 				width      	931
 				height     	232)
-			    (object AttachView "" @40
+			    (object AttachView "" @43
 				stereotype 	TRUE
 				line_color 	3342489
-				client     	@38
-				supplier   	@39
+				client     	@41
+				supplier   	@42
 				vertices   	(list Points
 				    (1262, 141)
 				    (1340, 138))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ClassPathResource" @41
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ClassPathResource" @44
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1445,7 +1586,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@41
+				    Parent_View 	@44
 				    location   	(759, 360)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1460,17 +1601,17 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @42
+			    (object InheritView "" @45
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98D190109"
-				client     	@38
-				supplier   	@41
+				client     	@41
+				supplier   	@44
 				vertices   	(list Points
 				    (954, 213)
 				    (956, 347))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::AbstractFileResolvingResource" @43
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::AbstractFileResolvingResource" @46
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1485,7 +1626,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@43
+				    Parent_View 	@46
 				    location   	(178, 645)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1500,7 +1641,7 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::UrlResource" @44
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::UrlResource" @47
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1515,7 +1656,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@44
+				    Parent_View 	@47
 				    location   	(121, 363)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1530,27 +1671,27 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @45
+			    (object InheritView "" @48
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98D540051"
-				client     	@44
-				supplier   	@43
+				client     	@47
+				supplier   	@46
 				vertices   	(list Points
 				    (302, 477)
 				    (426, 632))
 				line_style 	0)
-			    (object InheritView "" @46
+			    (object InheritView "" @49
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98D6D0098"
-				client     	@41
-				supplier   	@43
+				client     	@44
+				supplier   	@46
 				vertices   	(list Points
 				    (850, 474)
 				    (582, 632))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::AbstractResource" @47
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::AbstractResource" @50
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1565,7 +1706,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@47
+				    Parent_View 	@50
 				    location   	(1372, 864)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1580,18 +1721,18 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @48
+			    (object InheritView "" @51
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98DA902D1"
-				client     	@43
-				supplier   	@47
+				client     	@46
+				supplier   	@50
 				vertices   	(list Points
 				    (476, 759)
 				    (475, 913)
 				    (1362, 914))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::FileSystemResource" @49
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::FileSystemResource" @52
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1606,7 +1747,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@49
+				    Parent_View 	@52
 				    location   	(1165, 618)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1621,7 +1762,7 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::DescriptiveResource" @50
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::DescriptiveResource" @53
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1636,7 +1777,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@50
+				    Parent_View 	@53
 				    location   	(1871, 618)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1651,7 +1792,7 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ByteArrayResource" @51
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ByteArrayResource" @54
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1666,7 +1807,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@51
+				    Parent_View 	@54
 				    location   	(2463, 615)
 				    fill_color 	13434879
 				    nlines     	1
@@ -1681,39 +1822,39 @@
 				height     	126
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @52
+			    (object InheritView "" @55
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98E1C0349"
-				client     	@49
-				supplier   	@47
+				client     	@52
+				supplier   	@50
 				vertices   	(list Points
 				    (1484, 732)
 				    (1562, 778)
 				    (1557, 851))
 				line_style 	0)
-			    (object InheritView "" @53
+			    (object InheritView "" @56
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98E25006F"
-				client     	@50
-				supplier   	@47
+				client     	@53
+				supplier   	@50
 				vertices   	(list Points
 				    (1936, 732)
 				    (1686, 851))
 				line_style 	0)
-			    (object InheritView "" @54
+			    (object InheritView "" @57
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98E2E0010"
-				client     	@51
-				supplier   	@47
+				client     	@54
+				supplier   	@50
 				vertices   	(list Points
 				    (2659, 729)
 				    (2662, 891)
 				    (1745, 910))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::Resource" @55
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::Resource" @58
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1728,7 +1869,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@55
+				    Parent_View 	@58
 				    location   	(1556, 1320)
 				    anchor_loc 	1
 				    nlines     	2
@@ -1744,17 +1885,17 @@
 				height     	58
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @56
+			    (object InheritView "" @59
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98E5A017F"
-				client     	@47
-				supplier   	@55
+				client     	@50
+				supplier   	@58
 				vertices   	(list Points
 				    (1554, 978)
 				    (1552, 1184))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::InputStreamSource" @57
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::InputStreamSource" @60
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1769,7 +1910,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@57
+				    Parent_View 	@60
 				    location   	(1559, 1635)
 				    anchor_loc 	1
 				    nlines     	1
@@ -1785,17 +1926,17 @@
 				height     	58
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @58
+			    (object InheritView "" @61
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98E8000B0"
-				client     	@55
-				supplier   	@57
+				client     	@58
+				supplier   	@60
 				vertices   	(list Points
 				    (1556, 1345)
 				    (1555, 1498))
 				line_style 	0)
-			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ContextResource" @59
+			    (object ClassView "Class" "Use Case View::XmlBeanFactory初始化时序图 2.5::ContextResource" @62
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -1810,7 +1951,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@59
+				    Parent_View 	@62
 				    location   	(914, 1167)
 				    anchor_loc 	1
 				    nlines     	1
@@ -1826,18 +1967,18 @@
 				height     	58
 				annotation 	8
 				autoResize 	TRUE)
-			    (object InheritView "" @60
+			    (object InheritView "" @63
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5BC98EB700D0"
-				client     	@59
-				supplier   	@55
+				client     	@62
+				supplier   	@58
 				vertices   	(list Points
 				    (1075, 1095)
 				    (1529, 1203))
 				line_style 	0)))
 		    (object InteractionDiagram "2.5 XmlBeanFactory初始化时序图"
-			mechanism_ref 	@36
+			mechanism_ref 	@38
 			quid       	"5BC9814D037F"
 			title      	"2.5 XmlBeanFactory初始化时序图"
 			zoom       	100
@@ -1846,7 +1987,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object InterObjView "bf:BeanFactoryTest" @61
+			    (object InterObjView "bf:BeanFactoryTest" @64
 				location   	(366, 225)
 				font       	(object Font
 				    size       	10
@@ -1858,7 +1999,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@61
+				    Parent_View 	@64
 				    location   	(366, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -1876,35 +2017,35 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @62
+				Focus_Of_Control 	(object Focus_Of_Control "" @65
 				    location   	(366, 366)
 				    line_color 	3342489
-				    InterObjView 	@61
+				    InterObjView 	@64
 				    height     	205
 				    y_coord    	115
 				    Nested     	FALSE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @63
+				Focus_Of_Control 	(object Focus_Of_Control "" @66
 				    location   	(366, 471)
 				    line_color 	3342489
-				    InterObjView 	@61
+				    InterObjView 	@64
 				    height     	1
 				    y_coord    	-89
 				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @64
+				Focus_Of_Control 	(object Focus_Of_Control "" @67
 				    location   	(366, 642)
 				    line_color 	3342489
-				    InterObjView 	@61
+				    InterObjView 	@64
 				    height     	415
 				    y_coord    	325
 				    Nested     	FALSE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @65
+				Focus_Of_Control 	(object Focus_Of_Control "" @68
 				    location   	(366, 957)
 				    line_color 	3342489
-				    InterObjView 	@61
+				    InterObjView 	@64
 				    height     	1
 				    y_coord    	-89
 				    Nested     	TRUE))
-			    (object InterObjView "classPathResouce:ClassPathResource" @66
+			    (object InterObjView "classPathResouce:ClassPathResource" @69
 				location   	(1137, 225)
 				font       	(object Font
 				    size       	10
@@ -1916,7 +2057,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@66
+				    Parent_View 	@69
 				    location   	(1137, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -1934,14 +2075,14 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @67
+				Focus_Of_Control 	(object Focus_Of_Control "" @70
 				    location   	(1137, 366)
 				    line_color 	3342489
-				    InterObjView 	@66
+				    InterObjView 	@69
 				    height     	105
 				    y_coord    	15
 				    Nested     	FALSE))
-			    (object InterObjView "xmlBeanFactory:XmlBeanFactory" @68
+			    (object InterObjView "xmlBeanFactory:XmlBeanFactory" @71
 				location   	(1914, 225)
 				font       	(object Font
 				    size       	10
@@ -1953,7 +2094,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@68
+				    Parent_View 	@71
 				    location   	(1914, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -1971,21 +2112,21 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @69
+				Focus_Of_Control 	(object Focus_Of_Control "" @72
 				    location   	(1914, 642)
 				    line_color 	3342489
-				    InterObjView 	@68
+				    InterObjView 	@71
 				    height     	314
 				    y_coord    	224
 				    Nested     	FALSE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @70
+				Focus_Of_Control 	(object Focus_Of_Control "" @73
 				    location   	(1914, 852)
 				    line_color 	3342489
-				    InterObjView 	@68
+				    InterObjView 	@71
 				    height     	1
 				    y_coord    	-89
 				    Nested     	TRUE))
-			    (object InterObjView "reader:XmlBeanDefinitionReader" @71
+			    (object InterObjView "reader:XmlBeanDefinitionReader" @74
 				location   	(2697, 225)
 				font       	(object Font
 				    size       	10
@@ -1997,7 +2138,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@71
+				    Parent_View 	@74
 				    location   	(2697, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -2015,14 +2156,14 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @72
+				Focus_Of_Control 	(object Focus_Of_Control "" @75
 				    location   	(2697, 747)
 				    line_color 	3342489
-				    InterObjView 	@71
+				    InterObjView 	@74
 				    height     	104
 				    y_coord    	14
 				    Nested     	FALSE))
-			    (object InterMessView "1: new ClassPathResource(\"bean.xml\")" @73
+			    (object InterMessView "1: new ClassPathResource(\"bean.xml\")" @76
 				location   	(0, 366)
 				font       	(object Font
 				    size       	10
@@ -2033,8 +2174,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @74
-				    Parent_View 	@73
+				label      	(object SegLabel @77
+				    Parent_View 	@76
 				    location   	(751, 322)
 				    font       	(object Font
 					size       	10
@@ -2057,14 +2198,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@61
-				supplier   	@66
-				Focus_Src  	@62
-				Focus_Entry 	@67
+				client     	@64
+				supplier   	@69
+				Focus_Src  	@65
+				Focus_Entry 	@70
 				origin     	(381, 366)
 				terminus   	(1121, 366)
 				ordinal    	0)
-			    (object NoteView @75
+			    (object NoteView @78
 				location   	(1431, 1605)
 				font       	(object Font
 				    size       	10
@@ -2076,7 +2217,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@75
+				    Parent_View 	@78
 				    location   	(30, 1271)
 				    fill_color 	13434879
 				    nlines     	13
@@ -2093,7 +2234,7 @@
 				fill_color 	13434879
 				width      	2826
 				height     	681)
-			    (object InterMessView "2: resource:Resource" @76
+			    (object InterMessView "2: resource:Resource" @79
 				location   	(0, 471)
 				font       	(object Font
 				    size       	10
@@ -2104,8 +2245,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @77
-				    Parent_View 	@76
+				label      	(object SegLabel @80
+				    Parent_View 	@79
 				    location   	(752, 427)
 				    font       	(object Font
 					size       	10
@@ -2126,14 +2267,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@66
-				supplier   	@61
-				Focus_Src  	@67
-				Focus_Entry 	@63
+				client     	@69
+				supplier   	@64
+				Focus_Src  	@70
+				Focus_Entry 	@66
 				origin     	(1121, 471)
 				terminus   	(382, 471)
 				ordinal    	1)
-			    (object InterMessView "3: new XmlBeanFactory(resource)" @78
+			    (object InterMessView "3: new XmlBeanFactory(resource)" @81
 				location   	(0, 641)
 				font       	(object Font
 				    size       	10
@@ -2144,8 +2285,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @79
-				    Parent_View 	@78
+				label      	(object SegLabel @82
+				    Parent_View 	@81
 				    location   	(1139, 597)
 				    font       	(object Font
 					size       	10
@@ -2166,14 +2307,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@61
-				supplier   	@68
-				Focus_Src  	@64
-				Focus_Entry 	@69
+				client     	@64
+				supplier   	@71
+				Focus_Src  	@67
+				Focus_Entry 	@72
 				origin     	(381, 641)
 				terminus   	(1898, 641)
 				ordinal    	2)
-			    (object InterMessView "3.1: loadBeanDefinitions(resource)" @80
+			    (object InterMessView "3.1: loadBeanDefinitions(resource)" @83
 				location   	(0, 746)
 				font       	(object Font
 				    size       	10
@@ -2184,8 +2325,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @81
-				    Parent_View 	@80
+				label      	(object SegLabel @84
+				    Parent_View 	@83
 				    location   	(2305, 702)
 				    font       	(object Font
 					size       	10
@@ -2206,14 +2347,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@68
-				supplier   	@71
-				Focus_Src  	@69
-				Focus_Entry 	@72
+				client     	@71
+				supplier   	@74
+				Focus_Src  	@72
+				Focus_Entry 	@75
 				origin     	(1929, 746)
 				terminus   	(2681, 746)
 				ordinal    	3)
-			    (object InterMessView "3.2: loadedBeanDefinitionNum:int" @82
+			    (object InterMessView "3.2: loadedBeanDefinitionNum:int" @85
 				location   	(3, 851)
 				font       	(object Font
 				    size       	10
@@ -2224,8 +2365,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @83
-				    Parent_View 	@82
+				label      	(object SegLabel @86
+				    Parent_View 	@85
 				    location   	(2306, 807)
 				    font       	(object Font
 					size       	10
@@ -2246,14 +2387,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@71
-				supplier   	@68
-				Focus_Src  	@72
-				Focus_Entry 	@70
+				client     	@74
+				supplier   	@71
+				Focus_Src  	@75
+				Focus_Entry 	@73
 				origin     	(2681, 851)
 				terminus   	(1930, 851)
 				ordinal    	4)
-			    (object InterMessView "4: bf:BeanFactory" @84
+			    (object InterMessView "4: bf:BeanFactory" @87
 				location   	(3, 956)
 				font       	(object Font
 				    size       	10
@@ -2264,8 +2405,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @85
-				    Parent_View 	@84
+				label      	(object SegLabel @88
+				    Parent_View 	@87
 				    location   	(1140, 912)
 				    font       	(object Font
 					size       	10
@@ -2286,14 +2427,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@68
-				supplier   	@61
-				Focus_Src  	@69
-				Focus_Entry 	@65
+				client     	@71
+				supplier   	@64
+				Focus_Src  	@72
+				Focus_Entry 	@68
 				origin     	(1898, 956)
 				terminus   	(382, 956)
 				ordinal    	5)
-			    (object NoteView @86
+			    (object NoteView @89
 				location   	(3060, 651)
 				font       	(object Font
 				    size       	10
@@ -2305,7 +2446,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@86
+				    Parent_View 	@89
 				    location   	(2922, 591)
 				    fill_color 	13434879
 				    nlines     	2
@@ -2316,26 +2457,26 @@
 				fill_color 	13434879
 				width      	300
 				height     	132)
-			    (object AttachView "" @87
+			    (object AttachView "" @90
 				stereotype 	TRUE
 				line_color 	3342489
-				client     	@81
-				supplier   	@86
+				client     	@84
+				supplier   	@89
 				vertices   	(list Points
 				    (2622, 679)
 				    (2909, 660))
 				line_style 	0)))
-		    (object InteractionDiagram "2.5.2 XmlBeanFactory.loadBeanDefinitions(resource) 时序图"
-			mechanism_ref 	@37
+		    (object InteractionDiagram "2.5.2 loadBeanDefinitions(resource) 时序图"
+			mechanism_ref 	@39
 			quid       	"5BC98FF802A2"
-			title      	"2.5.2 XmlBeanFactory.loadBeanDefinitions(resource) 时序图"
+			title      	"2.5.2 loadBeanDefinitions(resource) 时序图"
 			zoom       	100
 			max_height 	28350
 			max_width  	21600
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object InterObjView "xmlBeanFactory:XmlBeanFactory" @88
+			    (object InterObjView "xmlBeanFactory:XmlBeanFactory" @91
 				location   	(351, 225)
 				font       	(object Font
 				    size       	10
@@ -2347,7 +2488,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@88
+				    Parent_View 	@91
 				    location   	(351, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -2365,21 +2506,21 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @89
+				Focus_Of_Control 	(object Focus_Of_Control "" @92
 				    location   	(351, 360)
 				    line_color 	3342489
-				    InterObjView 	@88
+				    InterObjView 	@91
 				    height     	1538
 				    y_coord    	1448
 				    Nested     	FALSE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @90
+				Focus_Of_Control 	(object Focus_Of_Control "" @93
 				    location   	(351, 1878)
 				    line_color 	3342489
-				    InterObjView 	@88
+				    InterObjView 	@91
 				    height     	90
 				    y_coord    	0
 				    Nested     	TRUE))
-			    (object InterObjView "reader:XmlBeanDefinitionReader" @91
+			    (object InterObjView "reader:XmlBeanDefinitionReader" @94
 				location   	(1038, 225)
 				font       	(object Font
 				    size       	10
@@ -2391,7 +2532,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@91
+				    Parent_View 	@94
 				    location   	(1038, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -2409,70 +2550,70 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @92
+				Focus_Of_Control 	(object Focus_Of_Control "" @95
 				    location   	(1038, 360)
 				    line_color 	3342489
-				    InterObjView 	@91
+				    InterObjView 	@94
 				    height     	459
 				    y_coord    	369
 				    Nested     	FALSE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @93
+				Focus_Of_Control 	(object Focus_Of_Control "" @96
 				    location   	(1038, 570)
 				    line_color 	3342489
-				    InterObjView 	@91
-				    height     	1
-				    y_coord    	-89
-				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @94
-				    location   	(1038, 753)
-				    line_color 	3342489
-				    InterObjView 	@91
-				    height     	826
-				    y_coord    	736
-				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @95
-				    location   	(1038, 963)
-				    line_color 	3342489
-				    InterObjView 	@91
-				    height     	1
-				    y_coord    	-89
-				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @96
-				    location   	(1038, 1173)
-				    line_color 	3342489
-				    InterObjView 	@91
+				    InterObjView 	@94
 				    height     	1
 				    y_coord    	-89
 				    Nested     	TRUE)
 				Focus_Of_Control 	(object Focus_Of_Control "" @97
-				    location   	(1038, 1383)
+				    location   	(1038, 753)
 				    line_color 	3342489
-				    InterObjView 	@91
+				    InterObjView 	@94
+				    height     	826
+				    y_coord    	736
+				    Nested     	TRUE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @98
+				    location   	(1038, 963)
+				    line_color 	3342489
+				    InterObjView 	@94
 				    height     	1
 				    y_coord    	-89
 				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @98
+				Focus_Of_Control 	(object Focus_Of_Control "" @99
+				    location   	(1038, 1173)
+				    line_color 	3342489
+				    InterObjView 	@94
+				    height     	1
+				    y_coord    	-89
+				    Nested     	TRUE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @100
+				    location   	(1038, 1383)
+				    line_color 	3342489
+				    InterObjView 	@94
+				    height     	1
+				    y_coord    	-89
+				    Nested     	TRUE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @101
 				    location   	(1038, 1515)
 				    line_color 	3342489
-				    InterObjView 	@91
+				    InterObjView 	@94
 				    height     	194
 				    y_coord    	104
 				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @99
+				Focus_Of_Control 	(object Focus_Of_Control "" @102
 				    location   	(1038, 1644)
 				    line_color 	3342489
-				    InterObjView 	@91
+				    InterObjView 	@94
 				    height     	195
 				    y_coord    	105
 				    Nested     	TRUE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @100
+				Focus_Of_Control 	(object Focus_Of_Control "" @103
 				    location   	(1038, 1773)
 				    line_color 	3342489
-				    InterObjView 	@91
+				    InterObjView 	@94
 				    height     	106
 				    y_coord    	16
 				    Nested     	TRUE))
-			    (object InterObjView "encodedResource: EncodedResource" @101
+			    (object InterObjView "encodedResource: EncodedResource" @104
 				location   	(1872, 225)
 				font       	(object Font
 				    size       	10
@@ -2484,7 +2625,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@101
+				    Parent_View 	@104
 				    location   	(1872, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -2502,21 +2643,21 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @102
+				Focus_Of_Control 	(object Focus_Of_Control "" @105
 				    location   	(1872, 465)
 				    line_color 	3342489
-				    InterObjView 	@101
+				    InterObjView 	@104
 				    height     	105
 				    y_coord    	15
 				    Nested     	FALSE)
-				Focus_Of_Control 	(object Focus_Of_Control "" @103
+				Focus_Of_Control 	(object Focus_Of_Control "" @106
 				    location   	(1872, 858)
 				    line_color 	3342489
-				    InterObjView 	@101
+				    InterObjView 	@104
 				    height     	106
 				    y_coord    	16
 				    Nested     	FALSE))
-			    (object InterObjView "resource: Resource" @104
+			    (object InterObjView "resource: Resource" @107
 				location   	(2541, 225)
 				font       	(object Font
 				    size       	10
@@ -2528,7 +2669,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@104
+				    Parent_View 	@107
 				    location   	(2541, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -2546,14 +2687,14 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @105
+				Focus_Of_Control 	(object Focus_Of_Control "" @108
 				    location   	(2541, 1068)
 				    line_color 	3342489
-				    InterObjView 	@104
+				    InterObjView 	@107
 				    height     	106
 				    y_coord    	16
 				    Nested     	FALSE))
-			    (object InterObjView "inputSource: InputSource" @106
+			    (object InterObjView "inputSource: InputSource" @109
 				location   	(2994, 225)
 				font       	(object Font
 				    size       	10
@@ -2565,7 +2706,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@106
+				    Parent_View 	@109
 				    location   	(2994, 225)
 				    fill_color 	13434879
 				    anchor_loc 	1
@@ -2583,14 +2724,14 @@
 				icon_width 	0
 				icon_y_offset 	0
 				annotation 	1
-				Focus_Of_Control 	(object Focus_Of_Control "" @107
+				Focus_Of_Control 	(object Focus_Of_Control "" @110
 				    location   	(2994, 1278)
 				    line_color 	3342489
-				    InterObjView 	@106
+				    InterObjView 	@109
 				    height     	106
 				    y_coord    	16
 				    Nested     	FALSE))
-			    (object InterMessView "1: loadBeanDefinitions(resource)" @108
+			    (object InterMessView "1: loadBeanDefinitions(resource)" @111
 				location   	(3, 360)
 				font       	(object Font
 				    size       	10
@@ -2601,8 +2742,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @109
-				    Parent_View 	@108
+				label      	(object SegLabel @112
+				    Parent_View 	@111
 				    location   	(694, 316)
 				    font       	(object Font
 					size       	10
@@ -2623,14 +2764,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@88
-				supplier   	@91
-				Focus_Src  	@89
-				Focus_Entry 	@92
+				client     	@91
+				supplier   	@94
+				Focus_Src  	@92
+				Focus_Entry 	@95
 				origin     	(366, 360)
 				terminus   	(1022, 360)
 				ordinal    	0)
-			    (object InterMessView "1.1: new EncodedResource(resource)" @110
+			    (object InterMessView "1.1: new EncodedResource(resource)" @113
 				location   	(3, 465)
 				font       	(object Font
 				    size       	10
@@ -2641,8 +2782,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @111
-				    Parent_View 	@110
+				label      	(object SegLabel @114
+				    Parent_View 	@113
 				    location   	(1454, 421)
 				    font       	(object Font
 					size       	10
@@ -2663,14 +2804,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@101
-				Focus_Src  	@92
-				Focus_Entry 	@102
+				client     	@94
+				supplier   	@104
+				Focus_Src  	@95
+				Focus_Entry 	@105
 				origin     	(1053, 465)
 				terminus   	(1856, 465)
 				ordinal    	1)
-			    (object InterMessView "1.2: encodedResource:EncodedResource" @112
+			    (object InterMessView "1.2: encodedResource:EncodedResource" @115
 				location   	(3, 570)
 				font       	(object Font
 				    size       	10
@@ -2681,8 +2822,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @113
-				    Parent_View 	@112
+				label      	(object SegLabel @116
+				    Parent_View 	@115
 				    location   	(1455, 526)
 				    font       	(object Font
 					size       	10
@@ -2703,14 +2844,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@101
-				supplier   	@91
-				Focus_Src  	@102
-				Focus_Entry 	@93
+				client     	@104
+				supplier   	@94
+				Focus_Src  	@105
+				Focus_Entry 	@96
 				origin     	(1856, 570)
 				terminus   	(1054, 570)
 				ordinal    	2)
-			    (object SelfMessView "1.3: loadBeanDefinition(encodedResource)" @114
+			    (object SelfMessView "1.3: loadBeanDefinition(encodedResource)" @117
 				location   	(3, 729)
 				font       	(object Font
 				    size       	10
@@ -2721,8 +2862,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @115
-				    Parent_View 	@114
+				label      	(object SegLabel @118
+				    Parent_View 	@117
 				    location   	(1129, 685)
 				    font       	(object Font
 					size       	10
@@ -2743,14 +2884,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@91
-				Focus_Src  	@92
-				Focus_Entry 	@94
+				client     	@94
+				supplier   	@94
+				Focus_Src  	@95
+				Focus_Entry 	@97
 				origin     	(1054, 729)
 				terminus   	(1204, 729)
 				ordinal    	3)
-			    (object InterMessView "1.3.1: encodedResource.getResource()" @116
+			    (object InterMessView "1.3.1: encodedResource.getResource()" @119
 				location   	(3, 859)
 				font       	(object Font
 				    size       	10
@@ -2761,8 +2902,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @117
-				    Parent_View 	@116
+				label      	(object SegLabel @120
+				    Parent_View 	@119
 				    location   	(1454, 815)
 				    font       	(object Font
 					size       	10
@@ -2783,14 +2924,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@101
-				Focus_Src  	@94
-				Focus_Entry 	@103
+				client     	@94
+				supplier   	@104
+				Focus_Src  	@97
+				Focus_Entry 	@106
 				origin     	(1053, 859)
 				terminus   	(1856, 859)
 				ordinal    	4)
-			    (object InterMessView "1.3.2: resource:Resource" @118
+			    (object InterMessView "1.3.2: resource:Resource" @121
 				location   	(3, 964)
 				font       	(object Font
 				    size       	10
@@ -2801,8 +2942,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @119
-				    Parent_View 	@118
+				label      	(object SegLabel @122
+				    Parent_View 	@121
 				    location   	(1455, 920)
 				    font       	(object Font
 					size       	10
@@ -2823,14 +2964,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@101
-				supplier   	@91
-				Focus_Src  	@103
-				Focus_Entry 	@95
+				client     	@104
+				supplier   	@94
+				Focus_Src  	@106
+				Focus_Entry 	@98
 				origin     	(1856, 964)
 				terminus   	(1054, 964)
 				ordinal    	5)
-			    (object InterMessView "1.3.3: getInputStream" @120
+			    (object InterMessView "1.3.3: getInputStream" @123
 				location   	(3, 1069)
 				font       	(object Font
 				    size       	10
@@ -2841,8 +2982,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @121
-				    Parent_View 	@120
+				label      	(object SegLabel @124
+				    Parent_View 	@123
 				    location   	(1789, 1025)
 				    font       	(object Font
 					size       	10
@@ -2863,14 +3004,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@104
-				Focus_Src  	@94
-				Focus_Entry 	@105
+				client     	@94
+				supplier   	@107
+				Focus_Src  	@97
+				Focus_Entry 	@108
 				origin     	(1053, 1069)
 				terminus   	(2525, 1069)
 				ordinal    	6)
-			    (object InterMessView "1.3.4: inputStream:InputStream" @122
+			    (object InterMessView "1.3.4: inputStream:InputStream" @125
 				location   	(3, 1174)
 				font       	(object Font
 				    size       	10
@@ -2881,8 +3022,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @123
-				    Parent_View 	@122
+				label      	(object SegLabel @126
+				    Parent_View 	@125
 				    location   	(1790, 1130)
 				    font       	(object Font
 					size       	10
@@ -2903,14 +3044,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@104
-				supplier   	@91
-				Focus_Src  	@105
-				Focus_Entry 	@96
+				client     	@107
+				supplier   	@94
+				Focus_Src  	@108
+				Focus_Entry 	@99
 				origin     	(2525, 1174)
 				terminus   	(1054, 1174)
 				ordinal    	7)
-			    (object InterMessView "1.3.5: new InputSource(inputStream)" @124
+			    (object InterMessView "1.3.5: new InputSource(inputStream)" @127
 				location   	(3, 1279)
 				font       	(object Font
 				    size       	10
@@ -2921,8 +3062,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @125
-				    Parent_View 	@124
+				label      	(object SegLabel @128
+				    Parent_View 	@127
 				    location   	(2015, 1235)
 				    font       	(object Font
 					size       	10
@@ -2943,14 +3084,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@106
-				Focus_Src  	@94
-				Focus_Entry 	@107
+				client     	@94
+				supplier   	@109
+				Focus_Src  	@97
+				Focus_Entry 	@110
 				origin     	(1053, 1279)
 				terminus   	(2978, 1279)
 				ordinal    	8)
-			    (object InterMessView "1.3.6: inputSource:InputSource" @126
+			    (object InterMessView "1.3.6: inputSource:InputSource" @129
 				location   	(3, 1384)
 				font       	(object Font
 				    size       	10
@@ -2961,8 +3102,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @127
-				    Parent_View 	@126
+				label      	(object SegLabel @130
+				    Parent_View 	@129
 				    location   	(2016, 1340)
 				    font       	(object Font
 					size       	10
@@ -2983,14 +3124,14 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@106
-				supplier   	@91
-				Focus_Src  	@107
-				Focus_Entry 	@97
+				client     	@109
+				supplier   	@94
+				Focus_Src  	@110
+				Focus_Entry 	@100
 				origin     	(2978, 1384)
 				terminus   	(1054, 1384)
 				ordinal    	9)
-			    (object SelfMessView "1.3.7:doLoadBeanDefinitions(inputSource, encodedResource.getResource())" @128
+			    (object SelfMessView "1.3.7:doLoadBeanDefinitions(inputSource, encodedResource.getResource())" @131
 				location   	(3, 1489)
 				font       	(object Font
 				    size       	10
@@ -3001,8 +3142,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @129
-				    Parent_View 	@128
+				label      	(object SegLabel @132
+				    Parent_View 	@131
 				    location   	(1129, 1445)
 				    font       	(object Font
 					size       	10
@@ -3023,14 +3164,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@91
-				Focus_Src  	@94
-				Focus_Entry 	@98
+				client     	@94
+				supplier   	@94
+				Focus_Src  	@97
+				Focus_Entry 	@101
 				origin     	(1054, 1489)
 				terminus   	(1204, 1489)
 				ordinal    	10)
-			    (object SelfMessView "1.3.8: loadedBeanDefinitionNum:int" @130
+			    (object SelfMessView "1.3.8: loadedBeanDefinitionNum:int" @133
 				location   	(3, 1619)
 				font       	(object Font
 				    size       	10
@@ -3041,8 +3182,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @131
-				    Parent_View 	@130
+				label      	(object SegLabel @134
+				    Parent_View 	@133
 				    location   	(1129, 1575)
 				    font       	(object Font
 					size       	10
@@ -3063,14 +3204,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@91
-				Focus_Src  	@98
-				Focus_Entry 	@99
+				client     	@94
+				supplier   	@94
+				Focus_Src  	@101
+				Focus_Entry 	@102
 				origin     	(1054, 1619)
 				terminus   	(1204, 1619)
 				ordinal    	11)
-			    (object SelfMessView "1.4: loadedBeanDefinitionNum:int" @132
+			    (object SelfMessView "1.4: loadedBeanDefinitionNum:int" @135
 				location   	(3, 1749)
 				font       	(object Font
 				    size       	10
@@ -3081,8 +3222,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @133
-				    Parent_View 	@132
+				label      	(object SegLabel @136
+				    Parent_View 	@135
 				    location   	(1129, 1705)
 				    font       	(object Font
 					size       	10
@@ -3103,14 +3244,14 @@
 				    height     	45
 				    orientation 	0)
 				line_color 	3342489
-				client     	@91
-				supplier   	@91
-				Focus_Src  	@99
-				Focus_Entry 	@100
+				client     	@94
+				supplier   	@94
+				Focus_Src  	@102
+				Focus_Entry 	@103
 				origin     	(1054, 1749)
 				terminus   	(1204, 1749)
 				ordinal    	12)
-			    (object InterMessView "2: loadedBeanDefinitionNum:int" @134
+			    (object InterMessView "2: loadedBeanDefinitionNum:int" @137
 				location   	(3, 1879)
 				font       	(object Font
 				    size       	10
@@ -3121,8 +3262,8 @@
 				    strike     	FALSE
 				    color      	0
 				    default_color 	TRUE)
-				label      	(object SegLabel @135
-				    Parent_View 	@134
+				label      	(object SegLabel @138
+				    Parent_View 	@137
 				    location   	(695, 1835)
 				    font       	(object Font
 					size       	10
@@ -3143,15 +3284,15 @@
 				    height     	45
 				    orientation 	1)
 				line_color 	3342489
-				client     	@91
-				supplier   	@88
-				Focus_Src  	@100
-				Focus_Entry 	@90
+				client     	@94
+				supplier   	@91
+				Focus_Src  	@103
+				Focus_Entry 	@93
 				origin     	(1022, 1879)
 				terminus   	(367, 1879)
 				ordinal    	13)
-			    (object NoteView @136
-				location   	(1626, 2280)
+			    (object NoteView @139
+				location   	(1638, 2331)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -3162,26 +3303,423 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@136
-				    location   	(13, 2071)
+				    Parent_View 	@139
+				    location   	(13, 2072)
 				    fill_color 	13434879
-				    nlines     	8
-				    max_width  	3190
+				    nlines     	10
+				    max_width  	3214
 				    justify    	1
 				    label      	
 |1.封装资源文件。当进入XmlBeanDefinitionReader 后首先对参数 Resource 使用 EncodedResource类进行封装。
 |2.获取输入流。从 Resource 中获取对应的 InputStream 并构造 InputSource。
 |3.通过构造的 InputSource 实例和Resource 实例继续调用函数 doLoadBeanDefinitions。
 |首先对传入的 resource 参数做封装，目的是考虑到 Resource 可能存在编码要求的情况，其次，通过SAX读取 XML文件的方式来准备
-|InputSource对象，最后将准备的数据通过参数传入真正的核心处理部分 doLoadBeanDefinition。doLoadBeanDefinition做了三件事情：
+|InputSource对象，最后将准备的数据通过参数传入真正的核心处理部分 doLoadBeanDefinitions。
+|doLoadBeanDefinitions做了三件事情（在后续还会有流程图）：
 |	1.获取对XML文件的验证模式。
 |	2.加载XML文件，并得到对应的 Document。
 |	3.根据返回的Document注册Bean信息。
 				    )
 				line_color 	3342489
 				fill_color 	13434879
-				width      	3250
-				height     	431))))))
+				width      	3274
+				height     	531)))
+		    (object InteractionDiagram "2.7 doLoadBeanDefinitions 时序图"
+			mechanism_ref 	@40
+			quid       	"5BCD343E0176"
+			title      	"2.7 doLoadBeanDefinitions 时序图"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list
+			    (object InterObjView "xmlBeanFactory" @140
+				location   	(180, 225)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	TRUE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@140
+				    location   	(180, 225)
+				    fill_color 	13434879
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	282
+				    justify    	0
+				    label      	"xmlBeanFactory")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"5BCD35480335"
+				width      	300
+				height     	966
+				icon_height 	0
+				icon_width 	0
+				icon_y_offset 	0
+				annotation 	1
+				Focus_Of_Control 	(object Focus_Of_Control "" @141
+				    location   	(180, 354)
+				    line_color 	3342489
+				    InterObjView 	@140
+				    height     	90
+				    y_coord    	0
+				    Nested     	FALSE))
+			    (object InterObjView "reader:XmlBeanDefinitionReader" @142
+				location   	(699, 225)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	TRUE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@142
+				    location   	(699, 225)
+				    fill_color 	13434879
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	600
+				    justify    	0
+				    label      	"reader:XmlBeanDefinitionReader")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"5BCD348900F2"
+				width      	618
+				height     	966
+				icon_height 	0
+				icon_width 	0
+				icon_y_offset 	0
+				annotation 	1
+				Focus_Of_Control 	(object Focus_Of_Control "" @143
+				    location   	(699, 354)
+				    line_color 	3342489
+				    InterObjView 	@142
+				    height     	131
+				    y_coord    	41
+				    Nested     	FALSE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @144
+				    location   	(699, 516)
+				    line_color 	3342489
+				    InterObjView 	@142
+				    height     	89
+				    y_coord    	-1
+				    Nested     	FALSE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @145
+				    location   	(699, 540)
+				    line_color 	3342489
+				    InterObjView 	@142
+				    height     	535
+				    y_coord    	445
+				    Nested     	TRUE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @146
+				    location   	(699, 879)
+				    line_color 	3342489
+				    InterObjView 	@142
+				    height     	1
+				    y_coord    	-89
+				    Nested     	TRUE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @147
+				    location   	(699, 1011)
+				    line_color 	3342489
+				    InterObjView 	@142
+				    height     	90
+				    y_coord    	0
+				    Nested     	TRUE))
+			    (object InterObjView "documentLoader: DefaultDocumentLoader" @148
+				location   	(1305, 225)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	TRUE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@148
+				    location   	(1305, 225)
+				    fill_color 	13434879
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	454
+				    justify    	0
+				    label      	"documentLoader: DefaultDocumentLoader")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"5BCD35F40315"
+				width      	472
+				height     	966
+				icon_height 	0
+				icon_width 	0
+				icon_y_offset 	0
+				annotation 	1
+				Focus_Of_Control 	(object Focus_Of_Control "" @149
+				    location   	(1305, 645)
+				    line_color 	3342489
+				    InterObjView 	@148
+				    height     	195
+				    y_coord    	105
+				    Nested     	FALSE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @150
+				    location   	(1305, 774)
+				    line_color 	3342489
+				    InterObjView 	@148
+				    height     	196
+				    y_coord    	106
+				    Nested     	TRUE))
+			    (object SelfMessView "1: doLoadDocument(inputSource, resource)" @151
+				location   	(3, 515)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @152
+				    Parent_View 	@151
+				    location   	(790, 471)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5BCD34E801A7"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	801
+				    justify    	0
+				    label      	"1: doLoadDocument(inputSource, resource)"
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	0)
+				line_color 	3342489
+				client     	@142
+				supplier   	@142
+				Focus_Src  	@144
+				Focus_Entry 	@145
+				origin     	(715, 515)
+				terminus   	(865, 515)
+				ordinal    	1)
+			    (object InterMessView "doLoadBeanDefinitions" @153
+				location   	(3, 354)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @154
+				    Parent_View 	@153
+				    location   	(439, 310)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5BCD35B3022E"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	423
+				    justify    	0
+				    label      	"doLoadBeanDefinitions"
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	0)
+				line_color 	3342489
+				client     	@140
+				supplier   	@142
+				Focus_Src  	@141
+				Focus_Entry 	@143
+				origin     	(195, 354)
+				terminus   	(683, 354)
+				ordinal    	0)
+			    (object InterMessView "2: loadDocument" @155
+				location   	(3, 645)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @156
+				    Parent_View 	@155
+				    location   	(1001, 601)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5BCD36210154"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	319
+				    justify    	0
+				    label      	"2: loadDocument"
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	0)
+				line_color 	3342489
+				client     	@142
+				supplier   	@148
+				Focus_Src  	@145
+				Focus_Entry 	@149
+				origin     	(714, 645)
+				terminus   	(1289, 645)
+				ordinal    	2)
+			    (object SelfMessView "3: SAX 解析XML" @157
+				location   	(3, 750)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @158
+				    Parent_View 	@157
+				    location   	(1396, 706)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5BCD389E0328"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	314
+				    justify    	0
+				    label      	"3: SAX 解析XML"
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	0)
+				line_color 	3342489
+				client     	@148
+				supplier   	@148
+				Focus_Src  	@149
+				Focus_Entry 	@150
+				origin     	(1321, 750)
+				terminus   	(1471, 750)
+				ordinal    	3)
+			    (object InterMessView "4: Document" @159
+				location   	(3, 880)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @160
+				    Parent_View 	@159
+				    location   	(1002, 836)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5BCD38B90016"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	244
+				    justify    	0
+				    label      	"4: Document"
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	1)
+				line_color 	3342489
+				client     	@148
+				supplier   	@142
+				Focus_Src  	@150
+				Focus_Entry 	@146
+				origin     	(1289, 880)
+				terminus   	(715, 880)
+				ordinal    	4)
+			    (object SelfMessView "5: registerBeanDefinitions(Document, Resource)" @161
+				location   	(3, 985)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @162
+				    Parent_View 	@161
+				    location   	(790, 941)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5BCD396903E4"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	885
+				    justify    	0
+				    label      	"5: registerBeanDefinitions(Document, Resource)"
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	0)
+				line_color 	3342489
+				client     	@142
+				supplier   	@142
+				Focus_Src  	@145
+				Focus_Entry 	@147
+				origin     	(715, 985)
+				terminus   	(865, 985)
+				ordinal    	5))))))
 	logical_presentations 	(list unit_reference_list
 	    (object UseCaseDiagram "Main"
 		quid       	"5BC9333E02F0"
@@ -3201,7 +3739,7 @@
 		origin_x   	513
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ClassView "Class" "Use Case View::DefaultListableBeanFactory" @137
+		    (object ClassView "Class" "Use Case View::DefaultListableBeanFactory" @163
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3216,7 +3754,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@137
+			    Parent_View 	@163
 			    location   	(1433, 196)
 			    fill_color 	13434879
 			    nlines     	1
@@ -3231,7 +3769,7 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::AbstractAutowireCapableBeanFactory" @138
+		    (object ClassView "Class" "Use Case View::AbstractAutowireCapableBeanFactory" @164
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3246,7 +3784,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@138
+			    Parent_View 	@164
 			    location   	(1337, 574)
 			    fill_color 	13434879
 			    nlines     	1
@@ -3261,17 +3799,17 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @139
+		    (object InheritView "" @165
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC9684E036B"
-			client     	@137
-			supplier   	@138
+			client     	@163
+			supplier   	@164
 			vertices   	(list Points
 			    (1703, 310)
 			    (1703, 561))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::BeanDefinitionRegistry" @140
+		    (object ClassView "Class" "Use Case View::BeanDefinitionRegistry" @166
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3286,7 +3824,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@140
+			    Parent_View 	@166
 			    location   	(460, 1264)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3302,18 +3840,18 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @141
+		    (object InheritView "" @167
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC9689B008B"
-			client     	@137
-			supplier   	@140
+			client     	@163
+			supplier   	@166
 			vertices   	(list Points
 			    (1423, 246)
 			    (460, 244)
 			    (459, 1128))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::AbstractBeanFactory" @142
+		    (object ClassView "Class" "Use Case View::AbstractBeanFactory" @168
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3328,7 +3866,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@142
+			    Parent_View 	@168
 			    location   	(956, 870)
 			    fill_color 	13434879
 			    nlines     	1
@@ -3343,7 +3881,7 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::AutowireCapableBeanFactory" @143
+		    (object ClassView "Class" "Use Case View::AutowireCapableBeanFactory" @169
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3358,7 +3896,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@143
+			    Parent_View 	@169
 			    location   	(1931, 949)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3374,27 +3912,27 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @144
+		    (object InheritView "" @170
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC9690702AB"
-			client     	@138
-			supplier   	@142
+			client     	@164
+			supplier   	@168
 			vertices   	(list Points
 			    (1585, 688)
 			    (1277, 857))
 			line_style 	0)
-		    (object InheritView "" @145
+		    (object InheritView "" @171
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC969150213"
-			client     	@138
-			supplier   	@143
+			client     	@164
+			supplier   	@169
 			vertices   	(list Points
 			    (1770, 688)
 			    (1904, 814))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::FactoryBeanRegistrySupport" @146
+		    (object ClassView "Class" "Use Case View::FactoryBeanRegistrySupport" @172
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3409,7 +3947,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@146
+			    Parent_View 	@172
 			    location   	(888, 1195)
 			    fill_color 	13434879
 			    nlines     	1
@@ -3424,17 +3962,17 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @147
+		    (object InheritView "" @173
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC969AE03B9"
-			client     	@142
-			supplier   	@146
+			client     	@168
+			supplier   	@172
 			vertices   	(list Points
 			    (1163, 984)
 			    (1167, 1182))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::ListableBeanFactory" @148
+		    (object ClassView "Class" "Use Case View::ListableBeanFactory" @174
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3449,7 +3987,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@148
+			    Parent_View 	@174
 			    location   	(2714, 1266)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3465,7 +4003,7 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::BeanFactory" @149
+		    (object ClassView "Class" "Use Case View::BeanFactory" @175
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3480,7 +4018,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@149
+			    Parent_View 	@175
 			    location   	(2367, 1869)
 			    anchor_loc 	1
 			    nlines     	2
@@ -3496,18 +4034,18 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @150
+		    (object InheritView "" @176
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96ABC0319"
-			client     	@143
-			supplier   	@149
+			client     	@169
+			supplier   	@175
 			vertices   	(list Points
 			    (1958, 840)
 			    (2366, 844)
 			    (2365, 1733))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::DefaultSingletonBeanRegistry" @151
+		    (object ClassView "Class" "Use Case View::DefaultSingletonBeanRegistry" @177
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3522,7 +4060,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@151
+			    Parent_View 	@177
 			    location   	(876, 1506)
 			    fill_color 	13434879
 			    nlines     	1
@@ -3537,17 +4075,17 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @152
+		    (object InheritView "" @178
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96B0102BF"
-			client     	@146
-			supplier   	@151
+			client     	@172
+			supplier   	@177
 			vertices   	(list Points
 			    (1168, 1309)
 			    (1166, 1493))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::SimpleAliasRegistry" @153
+		    (object ClassView "Class" "Use Case View::SimpleAliasRegistry" @179
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3562,7 +4100,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@153
+			    Parent_View 	@179
 			    location   	(540, 1790)
 			    fill_color 	13434879
 			    nlines     	1
@@ -3577,7 +4115,7 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::SingletonBeanRegistry" @154
+		    (object ClassView "Class" "Use Case View::SingletonBeanRegistry" @180
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3592,7 +4130,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@154
+			    Parent_View 	@180
 			    location   	(1521, 1872)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3608,29 +4146,29 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @155
+		    (object InheritView "" @181
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96B3501B8"
-			client     	@151
-			supplier   	@153
+			client     	@177
+			supplier   	@179
 			vertices   	(list Points
 			    (866, 1557)
 			    (741, 1557)
 			    (741, 1777))
 			line_style 	0)
-		    (object InheritView "" @156
+		    (object InheritView "" @182
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96B900376"
-			client     	@151
-			supplier   	@154
+			client     	@177
+			supplier   	@180
 			vertices   	(list Points
 			    (1164, 1620)
 			    (1163, 1763)
 			    (1494, 1762))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::HierarchicalBeanFactory" @157
+		    (object ClassView "Class" "Use Case View::HierarchicalBeanFactory" @183
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3645,7 +4183,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@157
+			    Parent_View 	@183
 			    location   	(1904, 1591)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3661,7 +4199,7 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::ConfigurableListableBeanFactory" @158
+		    (object ClassView "Class" "Use Case View::ConfigurableListableBeanFactory" @184
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3676,7 +4214,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@158
+			    Parent_View 	@184
 			    location   	(2709, 678)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3692,38 +4230,38 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @159
+		    (object InheritView "" @185
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC94C9B03BF"
-			client     	@137
-			supplier   	@158
+			client     	@163
+			supplier   	@184
 			vertices   	(list Points
 			    (1982, 247)
 			    (2710, 247)
 			    (2710, 541))
 			line_style 	0)
-		    (object InheritView "" @160
+		    (object InheritView "" @186
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC9693B0063"
-			client     	@158
-			supplier   	@143
+			client     	@184
+			supplier   	@169
 			vertices   	(list Points
 			    (2405, 673)
 			    (1958, 827))
 			line_style 	0)
-		    (object InheritView "" @161
+		    (object InheritView "" @187
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96A1D0051"
-			client     	@158
-			supplier   	@148
+			client     	@184
+			supplier   	@174
 			vertices   	(list Points
 			    (2709, 703)
 			    (2710, 1129))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::ConfigurableBeanFactory" @162
+		    (object ClassView "Class" "Use Case View::ConfigurableBeanFactory" @188
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3738,7 +4276,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@162
+			    Parent_View 	@188
 			    location   	(1910, 1288)
 			    anchor_loc 	1
 			    nlines     	1
@@ -3754,73 +4292,73 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @163
+		    (object InheritView "" @189
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96C84014E"
-			client     	@142
-			supplier   	@162
+			client     	@168
+			supplier   	@188
 			vertices   	(list Points
 			    (1379, 923)
 			    (1538, 926)
 			    (1535, 1160)
 			    (1883, 1175))
 			line_style 	0)
-		    (object InheritView "" @164
+		    (object InheritView "" @190
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96CAC035C"
-			client     	@158
-			supplier   	@162
+			client     	@184
+			supplier   	@188
 			vertices   	(list Points
 			    (2654, 703)
 			    (2451, 1169)
 			    (1937, 1175))
 			line_style 	0)
-		    (object InheritView "" @165
+		    (object InheritView "" @191
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96CEF0394"
-			client     	@162
-			supplier   	@157
+			client     	@188
+			supplier   	@183
 			vertices   	(list Points
 			    (1906, 1313)
 			    (1904, 1455))
 			line_style 	0)
-		    (object InheritView "" @166
+		    (object InheritView "" @192
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96D0B01D3"
-			client     	@162
-			supplier   	@154
+			client     	@188
+			supplier   	@180
 			vertices   	(list Points
 			    (1676, 1230)
 			    (1516, 1269)
 			    (1517, 1736))
 			line_style 	0)
-		    (object InheritView "" @167
+		    (object InheritView "" @193
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96A7802B9"
-			client     	@148
-			supplier   	@149
+			client     	@174
+			supplier   	@175
 			vertices   	(list Points
 			    (2714, 1291)
 			    (2716, 1757)
 			    (2394, 1756))
 			line_style 	0)
-		    (object InheritView "" @168
+		    (object InheritView "" @194
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96D4D02CD"
-			client     	@157
-			supplier   	@149
+			client     	@183
+			supplier   	@175
 			vertices   	(list Points
 			    (1903, 1616)
 			    (1904, 1763)
 			    (2338, 1760))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::AliasRegistry" @169
+		    (object ClassView "Class" "Use Case View::AliasRegistry" @195
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -3835,7 +4373,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@169
+			    Parent_View 	@195
 			    location   	(463, 2140)
 			    anchor_loc 	1
 			    nlines     	2
@@ -3851,28 +4389,28 @@
 			height     	58
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @170
+		    (object InheritView "" @196
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96DAF030A"
-			client     	@140
-			supplier   	@169
+			client     	@166
+			supplier   	@195
 			vertices   	(list Points
 			    (460, 1289)
 			    (459, 2004))
 			line_style 	0)
-		    (object InheritView "" @171
+		    (object InheritView "" @197
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC96DBF02A3"
-			client     	@153
-			supplier   	@169
+			client     	@179
+			supplier   	@195
 			vertices   	(list Points
 			    (741, 1904)
 			    (741, 2035)
 			    (490, 2031))
 			line_style 	0)
-		    (object NoteView @172
+		    (object NoteView @198
 			location   	(2324, 418)
 			font       	(object Font
 			    size       	10
@@ -3884,7 +4422,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@172
+			    Parent_View 	@198
 			    location   	(2036, 318)
 			    fill_color 	13434879
 			    nlines     	4
@@ -3895,16 +4433,16 @@
 			fill_color 	13434879
 			width      	600
 			height     	212)
-		    (object AttachView "" @173
+		    (object AttachView "" @199
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@172
-			supplier   	@138
+			client     	@198
+			supplier   	@164
 			vertices   	(list Points
 			    (2023, 516)
 			    (1889, 561))
 			line_style 	0)
-		    (object NoteView @174
+		    (object NoteView @200
 			location   	(3079, 1150)
 			font       	(object Font
 			    size       	10
@@ -3916,7 +4454,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@174
+			    Parent_View 	@200
 			    location   	(2847, 1084)
 			    fill_color 	13434879
 			    nlines     	2
@@ -3927,16 +4465,16 @@
 			fill_color 	13434879
 			width      	488
 			height     	144)
-		    (object AttachView "" @175
+		    (object AttachView "" @201
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@174
-			supplier   	@148
+			client     	@200
+			supplier   	@174
 			vertices   	(list Points
 			    (2834, 1155)
 			    (2741, 1153))
 			line_style 	0)
-		    (object NoteView @176
+		    (object NoteView @202
 			location   	(893, 675)
 			font       	(object Font
 			    size       	10
@@ -3948,7 +4486,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@176
+			    Parent_View 	@202
 			    location   	(531, 609)
 			    fill_color 	13434879
 			    nlines     	2
@@ -3959,16 +4497,16 @@
 			fill_color 	13434879
 			width      	749
 			height     	144)
-		    (object AttachView "" @177
+		    (object AttachView "" @203
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@176
-			supplier   	@142
+			client     	@202
+			supplier   	@168
 			vertices   	(list Points
 			    (972, 747)
 			    (1092, 857))
 			line_style 	0)
-		    (object NoteView @178
+		    (object NoteView @204
 			location   	(3040, 909)
 			font       	(object Font
 			    size       	10
@@ -3980,7 +4518,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@178
+			    Parent_View 	@204
 			    location   	(2780, 787)
 			    fill_color 	13434879
 			    nlines     	4
@@ -3991,16 +4529,16 @@
 			fill_color 	13434879
 			width      	544
 			height     	257)
-		    (object AttachView "" @179
+		    (object AttachView "" @205
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@143
-			supplier   	@178
+			client     	@169
+			supplier   	@204
 			vertices   	(list Points
 			    (1958, 840)
 			    (2767, 892))
 			line_style 	0)
-		    (object NoteView @180
+		    (object NoteView @206
 			location   	(2999, 1453)
 			font       	(object Font
 			    size       	10
@@ -4012,7 +4550,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@180
+			    Parent_View 	@206
 			    location   	(2808, 1372)
 			    fill_color 	13434879
 			    nlines     	3
@@ -4023,16 +4561,16 @@
 			fill_color 	13434879
 			width      	406
 			height     	175)
-		    (object AttachView "" @181
+		    (object AttachView "" @207
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@162
-			supplier   	@180
+			client     	@188
+			supplier   	@206
 			vertices   	(list Points
 			    (2142, 1235)
 			    (2795, 1401))
 			line_style 	0)
-		    (object NoteView @182
+		    (object NoteView @208
 			location   	(3055, 400)
 			font       	(object Font
 			    size       	10
@@ -4044,7 +4582,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@182
+			    Parent_View 	@208
 			    location   	(2827, 297)
 			    fill_color 	13434879
 			    nlines     	4
@@ -4055,16 +4593,16 @@
 			fill_color 	13434879
 			width      	481
 			height     	218)
-		    (object AttachView "" @183
+		    (object AttachView "" @209
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@182
-			supplier   	@158
+			client     	@208
+			supplier   	@184
 			vertices   	(list Points
 			    (2830, 509)
 			    (2736, 552))
 			line_style 	0)
-		    (object NoteView @184
+		    (object NoteView @210
 			location   	(997, 381)
 			font       	(object Font
 			    size       	10
@@ -4076,7 +4614,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@184
+			    Parent_View 	@210
 			    location   	(734, 287)
 			    fill_color 	13434879
 			    nlines     	3
@@ -4090,16 +4628,16 @@
 			fill_color 	13434879
 			width      	550
 			height     	200)
-		    (object AttachView "" @185
+		    (object AttachView "" @211
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@137
-			supplier   	@184
+			client     	@163
+			supplier   	@210
 			vertices   	(list Points
 			    (1423, 299)
 			    (1272, 328))
 			line_style 	0)
-		    (object ClassView "Class" "Use Case View::XmlBeanFactory" @186
+		    (object ClassView "Class" "Use Case View::XmlBeanFactory" @212
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -4114,7 +4652,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@186
+			    Parent_View 	@212
 			    location   	(1533, 14)
 			    fill_color 	13434879
 			    nlines     	1
@@ -4129,17 +4667,17 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @187
+		    (object InheritView "" @213
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5BC971D8010A"
-			client     	@186
-			supplier   	@137
+			client     	@212
+			supplier   	@163
 			vertices   	(list Points
 			    (1704, 65)
 			    (1703, 247))
 			line_style 	0)
-		    (object NoteView @188
+		    (object NoteView @214
 			location   	(2809, 115)
 			font       	(object Font
 			    size       	10
@@ -4151,7 +4689,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@188
+			    Parent_View 	@214
 			    location   	(2006, 6)
 			    fill_color 	13434879
 			    nlines     	4
@@ -4162,11 +4700,11 @@
 			fill_color 	13434879
 			width      	1631
 			height     	231)
-		    (object AttachView "" @189
+		    (object AttachView "" @215
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@186
-			supplier   	@188
+			client     	@212
+			supplier   	@214
 			vertices   	(list Points
 			    (1884, 72)
 			    (1993, 77))
